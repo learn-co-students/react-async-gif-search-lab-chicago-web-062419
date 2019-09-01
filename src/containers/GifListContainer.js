@@ -17,12 +17,12 @@ class GifListContainer extends Component {
 // slice the fetch data to only return first 3 results
 // set state updating the gifsArray
 
-  fetchGifs = search => {
-    URL = `http://api.giphy.com/v1/gifs/search?q=${search}&api_key=dc6zaTOxFJmzC&rating=g`;
+  fetchGifs = (search = "cats") => {
+    URL = `http://api.giphy.com/v1/gifs/search?q=${search}&api_key=dc6zaTOxFJmzC&rating=g&limit=3`;
     fetch(URL)
       .then(res => res.json())
       .then(data => {
-        let array = data.data.slice(0, 3);
+        // let array = data.data.slice(0, 3);
         this.setState({ gifsArray: array });
       });
   };
